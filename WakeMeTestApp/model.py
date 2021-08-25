@@ -19,4 +19,4 @@ def model_predict(wav_file_path, model):
 class ChosenModel:
     def __init__(self, path):
         self.model_path = path
-        self.model = keras.models.load_model(model_path)
+        self.model = keras.models.load_model(self.model_path)
