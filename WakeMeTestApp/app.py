@@ -1,9 +1,12 @@
 import numpy as np
+import WakeMeMeta
 from flask import Flask, request, jsonify, render_template
 from audio import record_to_file
+from model import model_predict
+from model import choose_model
 
 app=Flask(__name__)#create instance on flask
-
+i=0
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -18,17 +21,25 @@ def predict(model):
 
 @app.route('/record_voice', methods=["POST"])
 def record_voice():
-    record_to_file("test_audio_files/test.wav")
-    prediction_text = "Wake word Detected"
-    return render_template("index.html",prediction_text = prediction_text)
-
+    global i
+    model = choose_model()
+    path = "test_audio_files/test"+ str(i) + ".wav"
+    record_to_file(path)
+    predicted_text = "Wake Word not Detected"
+    i = i +1
+    predicted_output = WakeMeMeta.commands[model_predict(path,model)]
+    if predicted_output==WakeMeMeta.commands[0]:
+        predicted_text = "Wake Word Detected"
+    return render_template("index.html",prediction_text = predicted_text)
 
 @app.route('/predict_api', methods=["POST"])
-def predict_api(model):
-    data=request.get_json(force=True)
-    prediction=model.predict([np.array(list(data.values()))])
-    output=prediction[0]
-    return jsonify(output)
+def predict_api():
+    path = record_voice()
+    command_label = model_predict(path)
+    prediction_text = "Wake word not detected"
+    if(WakeMeMeta.commands[command_label] == WakeMeMeta[0]):
+        prediction_text = "Wake word Detected"
+    return render_template("index.html",prediction_text = prediction_text)
 
 @app.route('/model_initialize_api', methods = ['"POST'])
 def model_initialize():

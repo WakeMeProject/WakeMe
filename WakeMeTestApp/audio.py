@@ -1,8 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from flask import Flask, request, jsonify, render_template
-import pandas as pd
-import pickle
 from array import array
 from struct import pack
 from sys import byteorder
@@ -96,3 +91,4 @@ def record_to_file(path):
     wave_file.setframerate(WakeMeMeta.RATE)
     wave_file.writeframes(data)
     wave_file.close()
+    return("Done recording audio")
