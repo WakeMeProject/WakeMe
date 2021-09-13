@@ -1,4 +1,3 @@
-
 audioread==2.1.9
 ffmpeg==1.4
 ffprobe==0.5
@@ -16,7 +15,7 @@ pandocfilters==1.4.3
 parso==0.8.2
 pexpect==4.8.0
 pickleshare==0.7.5
-PyAudio==0.2.11
+pyaudio==0.2.11
 pydub==0.25.1
 requests==2.25.1
 requests-oauthlib==1.3.0
