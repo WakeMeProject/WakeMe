@@ -1,6 +1,6 @@
 import pyaudio
 
-THRESHOLD = 500  # audio levels not normalised.
+THRESHOLD = 500
 CHUNK_SIZE = 1024
 SILENT_CHUNKS = 1 * 44100 / 1024  # about 1sec
 FORMAT = pyaudio.paInt16
