@@ -36,7 +36,7 @@ def trim(data_all):
 
     return copy.deepcopy(data_all[int(_from):(int(_to) + 1)])
 
-def record():
+def record(duration=WakeMeMeta.SILENT_CHUNKS):
     """Record a word or words from the microphone and
     return the data as an array of signed shorts."""
 
@@ -64,7 +64,7 @@ def record():
         if audio_started:
             if silent:
                 silent_chunks += 1
-                if silent_chunks > WakeMeMeta.SILENT_CHUNKS:
+                if silent_chunks > duration:
                     break
             else:
                 silent_chunks = 0

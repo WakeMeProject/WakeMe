@@ -2,7 +2,7 @@ from tensorflow import keras
 import tensorflow as tf
 from preprocessing import preprocess_dataset
 
-default_model_path = "/Users/tanuj/PycharmProjects/WakeMe/WakeMeTestApp/models/fb_wake_test.h5"
+default_model_path = "models/fb_wake_test.h5"
 
 def choose_model(model_file_path = default_model_path):
     global chosen_model

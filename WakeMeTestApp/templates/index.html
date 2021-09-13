@@ -13,9 +13,24 @@
 </head>
 
 <body>
- <div class="login">
-	<h1>Wake Word Detection</h1>
-
+<div class="login">
+<h1>Wake Word Detection</h1>
+    <p>Please select Custom Wake Word Model</p>
+    <form id="form1" action="/model_selection" method="POST" enctype="multipart/form-data">
+        <select id="mySelect" name = "models">
+            <option value="House">House</option>
+            <option value="Cat">Cat</option>
+            <option value="FourthBrain">Fourthbrain</option>
+        </select>
+    <br>
+    <br>
+        <input type="submit" class="btn btn-primary btn-block btn-large" value="Submit Selection">
+    </form>
+    <br>
+    {{ selection_text }}
+    <br>
+    <br>
+    <br>
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('record_voice')}}"method="POST">
         <button type="submit" class="btn btn-primary btn-block btn-large">Wake</button>
@@ -23,7 +38,6 @@
    <br>
    <br>
    {{ prediction_text }}
-
  </div>
 
 
