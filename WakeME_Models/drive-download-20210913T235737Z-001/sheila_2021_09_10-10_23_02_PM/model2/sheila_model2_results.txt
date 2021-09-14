@@ -1,0 +1,2 @@
+Accuracy	F1score	Precision	Recall	lr	num_epoch	num_neg	num_pos
+0.9888888888888889	0.993103448275862	0.9863013698630136	1.0	0.001	200	450	150
