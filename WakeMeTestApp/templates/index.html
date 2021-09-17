@@ -19,26 +19,31 @@
     <form id="form1" action="/model_selection" method="POST" enctype="multipart/form-data">
         <select id="mySelect" name = "models">
             <option value="House">House</option>
-            <option value="Cat">Cat</option>
             <option value="FourthBrain">Fourthbrain</option>
         </select>
     <br>
+        <br>
+        {{ selection_text }}
+        <br>
     <br>
         <input type="submit" class="btn btn-primary btn-block btn-large" value="Submit Selection">
     </form>
-    <br>
-    {{ selection_text }}
-    <br>
-    <br>
-    <br>
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('record_voice')}}"method="POST">
-        <button type="submit" class="btn btn-primary btn-block btn-large">Wake</button>
+        <p>Upload your .wav file (max length 1.5s at 16 KHz</p>
+    <form method="post" action="/wave_selection "enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit" id="btn btn-primary btn-block btn-large" value="Test"/>
     </form>
-   <br>
-   <br>
+
+<!--    <form action="{{ url_for('record_voice')}}"method="POST">-->
+<!--        <button type="submit" class="btn btn-primary btn-block btn-large">Wake</button>-->
+<!--    </form>-->
+<!--   <br>-->
+<!--   <br>-->
    {{ prediction_text }}
- </div>
+    <br>
+
+
+</div>
 
 
 </body>
