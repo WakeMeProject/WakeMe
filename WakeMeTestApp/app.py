@@ -56,7 +56,7 @@ def wav_selection():
     file = request.files["file"]
     object_name = file.filename
     s3_client = boto3.client('s3')
-    response = s3_client.upload_file(file.filename, "", object_name)
+    response = s3_client.upload_file(file.filename, "<put in name of s3 bucket here>", object_name)
     predicted_output = WakeMeMeta.commands[model_predict(file.filename,model)]
     if predicted_output==WakeMeMeta.commands[0]:
         predicted_text = "Wake Word Detected"
