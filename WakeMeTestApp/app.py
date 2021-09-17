@@ -25,6 +25,7 @@ def home():
 
 @app.route('/record_voice', methods=["POST"])
 #The following method is for the real-time wake deployment and only works in the case of local deployment
+# will output a wav to your current working directory
 def record_voice():
     global i
     path = os.getcwd() + str(i) + "test.wav"
@@ -55,7 +56,7 @@ def wav_selection():
     file = request.files["file"]
     object_name = file.filename
     s3_client = boto3.client('s3')
-    response = s3_client.upload_file(file.filename, "elasticbeanstalk-us-west-2-173918199872", object_name)
+    response = s3_client.upload_file(file.filename, "", object_name)
     predicted_output = WakeMeMeta.commands[model_predict(file.filename,model)]
     if predicted_output==WakeMeMeta.commands[0]:
         predicted_text = "Wake Word Detected"
