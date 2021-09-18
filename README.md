@@ -32,3 +32,17 @@ Our study showed that:
 *Model type is more important than the length of the word
 
 *There is a significant advantage of using "Hey" or "Hello" in the wake phrase
+
+Steps to launch the WakeMe test app
+
+Go into the wakemetestapp directory-
+* cd ~./wakemetesapp
+
+Init the app using the following-
+* eb init -p docker-19.03.13-ce your-app-name --region us-west-2
+
+Launch the app using the following-
+* eb create your-app-name --instance_type t2.large --max-instances 1
+
+
+
